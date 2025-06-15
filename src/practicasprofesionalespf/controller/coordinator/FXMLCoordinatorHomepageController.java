@@ -60,4 +60,22 @@ public class FXMLCoordinatorHomepageController implements Initializable {
     private void onLogoutButtonClicked(ActionEvent event) {
     }
     
+    @FXML
+    private void btnScheduleDeliverableClicked(ActionEvent event) {
+        try {
+            Stage scheduleStage = new Stage();
+            Parent view = FXMLLoader.load(PracticasProfesionalesPF.class.getResource("view/coordinator/FXMLScheduleDeliverable.fxml"));
+            Scene scene = new Scene(view);
+            scheduleStage.setScene(scene);
+            scheduleStage.setTitle("Programar Entregable");
+            scheduleStage.initModality(Modality.APPLICATION_MODAL);
+            scheduleStage.showAndWait();
+        } catch(IOException ex) {
+            Utils.showSimpleAlert(
+                Alert.AlertType.ERROR, 
+                "Error con la interfaz", 
+                "No se pudo abrir la ventana, inténtalo más tarde"
+            );
+        }
+    }
 }
