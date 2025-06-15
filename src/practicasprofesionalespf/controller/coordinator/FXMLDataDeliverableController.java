@@ -68,7 +68,7 @@ public class FXMLDataDeliverableController implements Initializable {
             OperationResult result = DeliveryDAO.scheduleDelivery(newDelivery);
 
             if (!result.isError()) {
-                Utils.showSimpleAlert(Alert.AlertType.ERROR, "FXMLPopupConfirmation", result.getMessage());
+                Utils.showSimpleAlert(Alert.AlertType.CONFIRMATION, "FXMLPopupConfirmation", result.getMessage());
                 closeWindow();
             } else {
                 Utils.showSimpleAlert(Alert.AlertType.ERROR, "Error", result.getMessage());
