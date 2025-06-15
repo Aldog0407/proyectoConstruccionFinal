@@ -1,21 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.text.*?>
-<?import javafx.scene.image.*?>
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="practicasprofesionalespf.controller.coordinator.FXMLConfirmDataController">
+<AnchorPane id="AnchorPane" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="practicasprofesionalespf.controller.coordinator.FXMLDataDeliverableController">
    <children>
       <ImageView fitHeight="150.0" fitWidth="102.0" layoutX="34.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../images/uv_logo.png" />
          </image>
       </ImageView>
-      <Pane layoutX="732.0" prefHeight="56.0" prefWidth="294.0" style="-fx-background-color: #015aaa;">
+      <Pane layoutX="730.0" prefHeight="56.0" prefWidth="294.0" style="-fx-background-color: #015aaa;">
          <children>
             <Label layoutX="12.0" layoutY="10.0" text="Universidad Veracruzana" textFill="WHITE">
                <font>
@@ -24,87 +27,38 @@
             </Label>
          </children>
       </Pane>
-      <Label layoutX="185.0" layoutY="118.0" text="Confirma los datos">
+      
+      <Label layoutX="185.0" layoutY="118.0" text="Datos del Entregable">
          <font>
             <Font name="Avenir Medium" size="36.0" />
          </font>
       </Label>
-      <Label layoutX="92.0" layoutY="225.0" text="Nombre" textFill="#015aaa">
+      
+      <Label layoutX="185.0" layoutY="200.0" text="Nombre del Entregable:" textFill="#015aaa">
          <font>
             <Font name="Avenir Medium" size="18.0" />
          </font>
       </Label>
-      <Label fx:id="lbName" layoutX="99.0" layoutY="274.0">
+      <TextField fx:id="tfDeliveryName" layoutX="185.0" layoutY="230.0" prefHeight="35.0" prefWidth="650.0" />
+      <Label layoutX="185.0" layoutY="290.0" text="Descripción (Opcional):" textFill="#015aaa">
          <font>
             <Font name="Avenir Medium" size="18.0" />
          </font>
       </Label>
-      <Label layoutX="362.0" layoutY="230.0" text="Apellido Paterno" textFill="#015aaa">
-         <font>
-            <Font name="Avenir Next Regular" size="18.0" />
-         </font>
-      </Label>
-      <Label fx:id="lbLastNameFather" layoutX="369.0" layoutY="265.0">
+      <TextArea fx:id="taDescription" layoutX="185.0" layoutY="320.0" prefHeight="200.0" prefWidth="650.0" wrapText="true" />
+      <Label layoutX="185.0" layoutY="550.0" text="Fecha Límite:" textFill="#015aaa">
          <font>
             <Font name="Avenir Medium" size="18.0" />
          </font>
       </Label>
-      <Label layoutX="676.0" layoutY="235.0" text="Apellido Materno" textFill="#015aaa">
-         <font>
-            <Font name="Avenir Medium" size="18.0" />
-         </font>
-      </Label>
-      <Label fx:id="lbLastNameMother" layoutX="683.0" layoutY="284.0">
-         <font>
-            <Font name="Avenir Medium" size="18.0" />
-         </font>
-      </Label>
-      <Label layoutX="90.0" layoutY="371.0" text="Cargo" textFill="#015aaa">
-         <font>
-            <Font name="Avenir Medium" size="18.0" />
-         </font>
-      </Label>
-      <Label fx:id="lbPosition" layoutX="92.0" layoutY="418.0" prefHeight="27.0" prefWidth="338.0">
-         <font>
-            <Font name="Avenir Medium" size="18.0" />
-         </font>
-      </Label>
-      <Label layoutX="676.0" layoutY="371.0" text="Correo" textFill="#015aaa">
-         <font>
-            <Font name="Avenir Medium" size="18.0" />
-         </font>
-      </Label>
-      <Label fx:id="lbEmail" layoutX="566.0" layoutY="418.0" prefHeight="27.0" prefWidth="409.0">
-         <font>
-            <Font name="Avenir Medium" size="18.0" />
-         </font>
-      </Label>
-      <Label layoutX="63.0" layoutY="541.0" text="Telefono" textFill="#015aaa">
-         <font>
-            <Font name="Avenir Medium" size="18.0" />
-         </font>
-      </Label>
-      <Label fx:id="lbPhone" layoutX="72.0" layoutY="581.0" prefHeight="27.0" prefWidth="268.0">
-         <font>
-            <Font name="Avenir Medium" size="18.0" />
-         </font>
-      </Label>
-      <Label layoutX="609.0" layoutY="541.0" text="Organización Vinculada" textFill="#015aaa">
-         <font>
-            <Font name="Avenir Medium" size="18.0" />
-         </font>
-      </Label>
-      <Label fx:id="lbLinkedOrganization" layoutX="566.0" layoutY="580.0" prefHeight="27.0" prefWidth="359.0">
-         <font>
-            <Font name="Avenir Medium" size="18.0" />
-         </font>
-      </Label>
-      <Button layoutX="660.0" layoutY="687.0" mnemonicParsing="false" onAction="#onModifyButtonClicked" style="-fx-background-color: #01ab4b;" text="ModificarDatos" textFill="WHITE">
+      <DatePicker fx:id="dpDueDate" layoutX="310.0" layoutY="546.0" prefHeight="35.0" prefWidth="180.0" />
+      
+      <Button fx:id="btnSubmit" layoutX="800.0" layoutY="680.0" mnemonicParsing="false" onAction="#btnSubmitClicked" prefHeight="40.0" prefWidth="120.0" style="-fx-background-color: #01ab4b;" text="Subir" textFill="WHITE">
          <font>
             <Font name="Avenir Medium" size="18.0" />
          </font>
       </Button>
-      <Button layoutX="869.0" layoutY="683.0" mnemonicParsing="false" onAction="#onAcceptButtonClick" style="-fx-background-color: #01ab4b;" text="Aceptar" textFill="WHITE">
+      <Button fx:id="btnExit" layoutX="670.0" layoutY="680.0" mnemonicParsing="false" onAction="#btnExitClicked" prefHeight="40.0" prefWidth="120.0" style="-fx-background-color: #D32F2F;" text="Salir" textFill="WHITE">
          <font>
             <Font name="Avenir Medium" size="18.0" />
          </font>
