@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="280.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="practicasprofesionalespf.controller.coordinator.FXMLDataDeliverableController">
+   <children>
+      <Label layoutX="30.0" layoutY="25.0" text="Datos del Entregable">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="30.0" layoutY="90.0" text="Nombre del Entregable:">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="tfDeliveryName" layoutX="30.0" layoutY="115.0" prefHeight="25.0" prefWidth="440.0" />
+      <Label layoutX="30.0" layoutY="165.0" text="Fecha Límite:">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <DatePicker fx:id="dpDueDate" layoutX="130.0" layoutY="161.0" />
+      <Button fx:id="btnSubmit" layoutX="414.0" layoutY="225.0" mnemonicParsing="false" onAction="#btnSubmitClicked" text="Subir" />
+      <Button fx:id="btnExit" layoutX="354.0" layoutY="225.0" mnemonicParsing="false" onAction="#btnExitClicked" style="-fx-background-color: #D32F2F;" text="Salir" textFill="WHITE" />
+   </children>
+</AnchorPane>

@@ -15,6 +15,8 @@ public class Delivery {
     private int idInitialDocument;
     private int idfinalDocument;
     private int ReportDocument;
+    private String description; 
+
 
     public Delivery() {
     }
