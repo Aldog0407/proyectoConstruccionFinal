@@ -1,26 +1,89 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
- */
 package practicasprofesionalespf.controller.coordinator;
 
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
+import javafx.beans.value.ChangeListener;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
+import practicasprofesionalespf.model.dao.StudentDAO;
+import practicasprofesionalespf.model.enums.DeliveryType;
+import practicasprofesionalespf.model.pojo.Student;
+import practicasprofesionalespf.utils.Utils;
+import practicasprofesionalespf.utils.WindowUtils;
 
-/**
- * FXML Controller class
- *
- * @author tonyz
- */
 public class FXMLScheduleDeliverableController implements Initializable {
 
-    /**
-     * Initializes the controller class.
-     */
+    @FXML
+    private TableView<Student> tvStudents;
+    @FXML
+    private TableColumn<Student, String> tcStudentName;
+    @FXML
+    private TableColumn<Student, String> tcTuition;
+    @FXML
+    private ComboBox<DeliveryType> cbDeliveryType;
+    @FXML
+    private Button btnContinue;
+
+    private ObservableList<Student> students;
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        students = FXCollections.observableArrayList();
+        configureTable();
+        loadStudentsWithProject();
+        cbDeliveryType.getItems().setAll(DeliveryType.values());
+        
+        ChangeListener<Object> listener = (obs, oldVal, newVal) -> 
+                btnContinue.setDisable(tvStudents.getSelectionModel().isEmpty() || cbDeliveryType.getSelectionModel().isEmpty());
+        
+        tvStudents.getSelectionModel().selectedItemProperty().addListener(listener);
+        cbDeliveryType.getSelectionModel().selectedItemProperty().addListener(listener);
+        
+        btnContinue.setDisable(true);
     }    
     
+    private void configureTable() {
+        tcStudentName.setCellValueFactory(new PropertyValueFactory<>("fullName"));
+        tcTuition.setCellValueFactory(new PropertyValueFactory<>("enrollment"));
+    }
+
+    private void loadStudentsWithProject() {
+        try {
+            students.addAll(StudentDAO.getStudentsWithProject());
+            tvStudents.setItems(students);
+        } catch (SQLException e) {
+            Utils.showSimpleAlert(Alert.AlertType.WARNING, 
+                                   "ERROR: No hay conexión con la base de datos. Inténtelo nuevamente.", 
+                                   "ERROR");
+            closeWindow();
+        }
+    }
+
+    @FXML
+    private void btnContinueClicked(ActionEvent event) {
+        
+    }
+
+    @FXML
+    private void btnExitClicked(ActionEvent event) {
+        if (Utils.showConfirmationAlert("¿Seguro que quieres salir?", "¿Salir?")) {
+            closeWindow();
+        }
+    }
+    
+    private void closeWindow(){
+        Stage stage = (Stage) tvStudents.getScene().getWindow();
+        stage.close();
+    }
 }

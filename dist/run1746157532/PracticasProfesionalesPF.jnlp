@@ -8,7 +8,7 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="PracticasProfesionalesPF.jar" size="176501" download="eager" />
+    <jar href="PracticasProfesionalesPF.jar" size="180326" download="eager" />
     <jar href="lib\jbcrypt-0.4.jar" size="17429" download="eager" />
     <jar href="lib\mysql-connector-j-9.2.0.jar" size="2609756" download="eager" />
   </resources>

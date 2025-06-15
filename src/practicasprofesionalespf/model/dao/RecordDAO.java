@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import practicasprofesionalespf.model.DBConnection;
+import practicasprofesionalespf.model.pojo.Record;
 
 
 public class RecordDAO {
@@ -27,4 +28,28 @@ public class RecordDAO {
        return idRecord;
     }
     
+    public static Record getRecordByStudent(int idStudent) throws SQLException {
+        Record record = null;
+        String query = "SELECT * FROM Record WHERE idStudent = ?";
+        
+        try (Connection connection = new DBConnection().createConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            
+            preparedStatement.setInt(1, idStudent);
+            
+            try (ResultSet rs = preparedStatement.executeQuery()) {
+                if (rs.next()) {
+                    record = new Record();
+                    record.setIdRecord(rs.getInt("idRecord"));
+                    record.setIdStudent(rs.getInt("idStudent"));
+                    record.setIdSubjectGroup(rs.getInt("idSubjectGroup"));
+                    record.setHoursCount(rs.getInt("hoursCount"));
+                    record.setReportPath(rs.getString("reportPath"));
+                    record.setPresentationPath(rs.getString("presentationPath"));
+                    record.setIdTerm(rs.getInt("idTerm"));
+                }
+            }
+        }
+        return record;
+    }
 }
