@@ -96,16 +96,17 @@ public class DeliveryDAO {
     public static OperationResult scheduleDelivery(Delivery delivery) throws SQLException {
         OperationResult response = new OperationResult();
         response.setError(true);
-        String query = "INSERT INTO Delivery (idRecord, name, startDate, endDate, deliveryType) VALUES (?, ?, ?, ?, ?)";
+        String query = "INSERT INTO Delivery (idRecord, name, description, startDate, endDate, deliveryType) VALUES (?, ?, ?, ?, ?, ?)";
 
         try (Connection connection = new DBConnection().createConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             
             preparedStatement.setInt(1, delivery.getIdRecord());
             preparedStatement.setString(2, delivery.getName());
-            preparedStatement.setTimestamp(3, Timestamp.valueOf(delivery.getStartDate()));
-            preparedStatement.setTimestamp(4, Timestamp.valueOf(delivery.getEndDate()));
-            preparedStatement.setString(5, delivery.getDeliveryType().toString());
+            preparedStatement.setString(3, delivery.getDescription()); // << CAMBIO: Se añade el nuevo parámetro
+            preparedStatement.setTimestamp(4, Timestamp.valueOf(delivery.getStartDate()));
+            preparedStatement.setTimestamp(5, Timestamp.valueOf(delivery.getEndDate()));
+            preparedStatement.setString(6, delivery.getDeliveryType().toString());
 
             int affectedRows = preparedStatement.executeUpdate();
             if (affectedRows > 0) {

@@ -104,7 +104,14 @@ public class Delivery {
     public void setReportDocument(int ReportDocument) {
         this.ReportDocument = ReportDocument;
     }
+    
+    public String getDescription() { // << CAMBIO: Getter añadido
+        return description;
+    }
 
+    public void setDescription(String description) { // << CAMBIO: Setter añadido
+        this.description = description;
+    }
     
     
     
