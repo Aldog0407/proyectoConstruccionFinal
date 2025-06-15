@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="733.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="practicasprofesionalespf.controller.coordinator.FXMLUpdateProjectManagerController">
+   <children>
+      <ImageView fitHeight="81.0" fitWidth="69.0" layoutX="3.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../images/uv_logo.png" />
+         </image>
+      </ImageView>
+      <Pane layoutX="409.0" prefHeight="55.0" prefWidth="324.0" style="-fx-background-color: #015aaa;">
+         <children>
+            <Label layoutX="29.0" layoutY="10.0" prefHeight="28.0" prefWidth="266.0" text="Universidad Veracruzana" textFill="WHITE">
+               <font>
+                  <Font name="Avenir Medium" size="24.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Label layoutX="95.0" layoutY="102.0" text="Label" />
+   </children>
+</AnchorPane>

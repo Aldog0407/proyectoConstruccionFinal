@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="practicasprofesionalespf.controller.evaluator.FXMLEvaluateStudentController">
+  <content>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="768.0" prefWidth="1004.0">
+         <children>
+            <ImageView fitHeight="137.0" fitWidth="114.0" layoutX="23.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../images/uv_logo.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="200.0" layoutY="77.0" text="Evaluando Estudiante">
+               <font>
+                  <Font name="Avenir Medium" size="24.0" />
+               </font>
+            </Label>
+            <Pane layoutX="720.0" layoutY="-3.0" prefHeight="73.0" prefWidth="285.0" style="-fx-background-color: #015aaa;">
+               <children>
+                  <Label layoutX="11.0" layoutY="18.0" text="Universidad Veracruzana" textFill="WHITE">
+                     <font>
+                        <Font name="Avenir Medium" size="24.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Label fx:id="lbEnrollmentId" layoutX="200.0" layoutY="125.0" textFill="#015aaa">
+               <font>
+                  <Font name="Avenir Medium" size="24.0" />
+               </font>
+            </Label>
+            <Label fx:id="lbStudentName" layoutX="526.0" layoutY="125.0" textFill="#015aaa">
+               <font>
+                  <Font name="Avenir Medium" size="24.0" />
+               </font>
+            </Label>
+            <Label layoutX="58.0" layoutY="222.0" text="Presentó con claridad los objetivos del proyecto o área donde colabora.">
+               <font>
+                  <Font name="Avenir Medium" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="849.0" layoutY="188.0" text="¿Lo cumple?" textFill="#015aaa">
+               <font>
+                  <Font name="Avenir Medium" size="14.0" />
+               </font>
+            </Label>
+            <CheckBox fx:id="cbCriteria1" layoutX="879.0" layoutY="227.0" mnemonicParsing="false" />
+            <Label layoutX="59.0" layoutY="260.0" text="Describió las actividades realizadas hasta la fecha con orden y coherencia.">
+               <font>
+                  <Font name="Avenir Medium" size="18.0" />
+               </font>
+            </Label>
+            <CheckBox fx:id="cbCriteria2" layoutX="879.0" layoutY="264.0" mnemonicParsing="false" />
+            <Label layoutX="59.0" layoutY="299.0" text="Explicó su rol dentro del equipo o empresa con claridad.">
+               <font>
+                  <Font name="Avenir Medium" size="18.0" />
+               </font>
+            </Label>
+            <CheckBox fx:id="cbCriteria3" layoutX="879.0" layoutY="304.0" mnemonicParsing="false" />
+            <Label layoutX="59.0" layoutY="339.0" text="Mostró evidencias de su trabajo (capturas, entregables, documentos, etc.).">
+               <font>
+                  <Font name="Avenir Medium" size="18.0" />
+               </font>
+            </Label>
+            <CheckBox fx:id="cbCriteria4" layoutX="879.0" layoutY="344.0" mnemonicParsing="false" />
+            <Label layoutX="58.0" layoutY="379.0" text="Reflexionó sobre lo aprendido hasta el momento.">
+               <font>
+                  <Font name="Avenir Medium" size="18.0" />
+               </font>
+            </Label>
+            <CheckBox fx:id="cbCriteria5" layoutX="880.0" layoutY="383.0" mnemonicParsing="false" />
+            <Label layoutX="59.0" layoutY="412.0" text="Identificó los retos que ha enfrentado y cómo los abordó.">
+               <font>
+                  <Font name="Avenir Medium" size="18.0" />
+               </font>
+            </Label>
+            <CheckBox fx:id="cbCriteria6" layoutX="880.0" layoutY="416.0" mnemonicParsing="false" />
+            <Label layoutX="60.0" layoutY="450.0" text="Demostró claridad al explicar términos técnicos relacionados con su rol.">
+               <font>
+                  <Font name="Avenir Medium" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="57.0" layoutY="485.0" text="Mostró una actitud profesional durante su exposición.">
+               <font>
+                  <Font name="Avenir Medium" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="57.0" layoutY="520.0" text="Proyectó próximos pasos o metas para el resto de las prácticas.">
+               <font>
+                  <Font name="Avenir Medium" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="57.0" layoutY="553.0" text="Mantuvo buena expresión oral, contacto visual y lenguaje adecuado.">
+               <font>
+                  <Font name="Avenir Medium" size="18.0" />
+               </font>
+            </Label>
+            <CheckBox fx:id="cbCriteria7" layoutX="880.0" layoutY="455.0" mnemonicParsing="false" />
+            <CheckBox fx:id="cbCriteria8" layoutX="880.0" layoutY="489.0" mnemonicParsing="false" />
+            <CheckBox fx:id="cbCriteria9" layoutX="881.0" layoutY="525.0" mnemonicParsing="false" />
+            <CheckBox fx:id="cbCriteria10" layoutX="882.0" layoutY="557.0" mnemonicParsing="false" />
+            <Label layoutX="70.0" layoutY="591.0" text="Observaciones" textFill="#015aaa">
+               <font>
+                  <Font name="Avenir Medium" size="18.0" />
+               </font>
+            </Label>
+            <TextArea fx:id="taObservations" layoutX="68.0" layoutY="618.0" prefHeight="104.0" prefWidth="544.0" />
+            <Button layoutX="897.0" layoutY="687.0" mnemonicParsing="false" onAction="#onAcceptButtonClicked" style="-fx-background-color: #01ab4b;" text="Aceptar" textFill="WHITE">
+               <font>
+                  <Font name="Avenir Medium" size="18.0" />
+               </font>
+            </Button>
+            <Button layoutX="776.0" layoutY="687.0" mnemonicParsing="false" onAction="#onCancelButtonClicked" style="-fx-background-color: #01ab4b;" text="Cancelar" textFill="WHITE">
+               <font>
+                  <Font name="Avenir Medium" size="18.0" />
+               </font>
+            </Button>
+         </children></AnchorPane>
+  </content>
+</ScrollPane>
