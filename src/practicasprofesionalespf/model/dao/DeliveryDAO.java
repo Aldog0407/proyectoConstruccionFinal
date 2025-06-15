@@ -103,7 +103,7 @@ public class DeliveryDAO {
             
             preparedStatement.setInt(1, delivery.getIdRecord());
             preparedStatement.setString(2, delivery.getName());
-            preparedStatement.setString(3, delivery.getDescription()); // << CAMBIO: Se añade el nuevo parámetro
+            preparedStatement.setString(3, delivery.getDescription()); 
             preparedStatement.setTimestamp(4, Timestamp.valueOf(delivery.getStartDate()));
             preparedStatement.setTimestamp(5, Timestamp.valueOf(delivery.getEndDate()));
             preparedStatement.setString(6, delivery.getDeliveryType().toString());
@@ -117,6 +117,47 @@ public class DeliveryDAO {
             }
         }
         return response;
+    }
+    
+    public static ArrayList<Delivery> getPendingReportsByStudent(int idStudent) throws SQLException {
+        ArrayList<Delivery> deliveries = new ArrayList<>();
+       
+        String query = "SELECT d.* FROM Delivery d " +
+                       "JOIN Record r ON d.idRecord = r.idRecord " +
+                       "WHERE r.idStudent = ? AND d.deliveryType = 'REPORT' AND d.idReportDocument IS NULL";
+
+        try (Connection connection = new DBConnection().createConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            
+            preparedStatement.setInt(1, idStudent);
+            try (ResultSet rs = preparedStatement.executeQuery()) {
+                while(rs.next()) {
+                    deliveries.add(convertDelivery(rs)); 
+                }
+            }
+        }
+        return deliveries;
+    }
+
+    
+    public static OperationResult updateDeliveryWithReport(int idDelivery, int idReportDocument) throws SQLException {
+        OperationResult result = new OperationResult();
+        String query = "UPDATE Delivery SET idReportDocument = ? WHERE idDelivery = ?";
+        try (Connection connection = new DBConnection().createConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            
+            preparedStatement.setInt(1, idReportDocument);
+            preparedStatement.setInt(2, idDelivery);
+
+            int affectedRows = preparedStatement.executeUpdate();
+            if (affectedRows > 0) {
+                result.setError(false);
+            } else {
+                result.setError(true);
+                result.setMessage("No se pudo actualizar la entrega.");
+            }
+        }
+        return result;
     }
 }
 

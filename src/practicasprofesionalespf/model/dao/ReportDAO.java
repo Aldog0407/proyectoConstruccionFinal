@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import practicasprofesionalespf.model.DBConnection;
 import practicasprofesionalespf.model.pojo.OperationResult;
@@ -63,6 +64,36 @@ public class ReportDAO {
         }
         
         return result;
+    }
+    
+
+  
+    public static int saveReport(Report report) throws SQLException {
+        int generatedId = -1;
+        // La tabla en la BD se llama ReportDocument, pero usamos el POJO Report
+        String query = "INSERT INTO ReportDocument (reportedHours, date, grade, name, delivered, status, filePath) " +
+                       "VALUES (?, ?, ?, ?, ?, ?, ?)";
+        
+        try (Connection connection = new DBConnection().createConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS)) {
+            
+            preparedStatement.setInt(1, report.getReportedHours());
+            preparedStatement.setString(2, report.getDate());
+            preparedStatement.setDouble(3, report.getGrade());
+            preparedStatement.setString(4, report.getName());
+            preparedStatement.setBoolean(5, report.isDelivered());
+            preparedStatement.setString(6, report.getStatus().toString()); 
+            preparedStatement.setString(7, report.getFilePath());
+
+            preparedStatement.executeUpdate();
+            
+            try (ResultSet rs = preparedStatement.getGeneratedKeys()) {
+                if (rs.next()) {
+                    generatedId = rs.getInt(1);
+                }
+            }
+        }
+        return generatedId;
     }
     
 }

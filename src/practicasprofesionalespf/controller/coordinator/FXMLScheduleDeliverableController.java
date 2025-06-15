@@ -25,7 +25,6 @@ import practicasprofesionalespf.model.dao.StudentDAO;
 import practicasprofesionalespf.model.enums.DeliveryType;
 import practicasprofesionalespf.model.pojo.Student;
 import practicasprofesionalespf.utils.Utils;
-import practicasprofesionalespf.utils.WindowUtils;
 
 public class FXMLScheduleDeliverableController implements Initializable {
 

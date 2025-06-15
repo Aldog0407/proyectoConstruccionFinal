@@ -8,15 +8,13 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="768.0" prefWidth="1024.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="practicasprofesionalespf.controller.student.FXMLStudentHomepageController">
+<AnchorPane id="AnchorPane" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="practicasprofesionalespf.controller.student.FXMLStudentHomepageController">
    <children>
       <ImageView fitHeight="125.0" fitWidth="101.0" layoutX="20.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../images/uv_logo.png" />
          </image>
       </ImageView>
-      <Pane layoutX="400.0" prefHeight="200.0" prefWidth="200.0" />
       <Pane layoutX="734.0" layoutY="-1.0" prefHeight="65.0" prefWidth="290.0" style="-fx-background-color: #015aaa;">
          <children>
             <Label layoutX="13.0" layoutY="15.0" text="Universidad Veracruzana" textFill="WHITE">
@@ -26,7 +24,7 @@
             </Label>
          </children>
       </Pane>
-      <Label layoutX="168.0" layoutY="73.0" text="Bienvenido de nuevo ">
+      <Label fx:id="lbWelcomeMessage" layoutX="168.0" layoutY="73.0" text="Bienvenido">
          <font>
             <Font name="Avenir Medium" size="36.0" />
          </font>
@@ -48,6 +46,23 @@
                </image>
             </ImageView>
          </graphic>
+      </Button>
+      <Button layoutX="438.0" layoutY="257.0" mnemonicParsing="false" onAction="#btnDeliverReportClicked" prefHeight="80.0" prefWidth="329.0" style="-fx-background-color: #7c9ccc;" text=" Entregar Reporte">
+         <font>
+            <Font name="Avenir Medium" size="24.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="28.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../images/report_icon.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button layoutX="836.0" layoutY="706.0" mnemonicParsing="false" onAction="#onLogoutButtonClicked" prefHeight="40.0" prefWidth="160.0" style="-fx-background-color: #D32F2F;" text="Cerrar Sesión" textFill="WHITE">
+         <font>
+            <Font name="Avenir Medium" size="18.0" />
+         </font>
       </Button>
    </children>
 </AnchorPane>

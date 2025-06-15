@@ -53,6 +53,21 @@ public class FXMLAssignmentOptionController implements Initializable {
 
     @FXML
     private void onSubmitReportClicked(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/practicasprofesionalespf/view/student/FXMLPendingDeliveries.fxml"));
+            Parent view = loader.load();
+
+        
+            
+            Stage stage = new Stage();
+            stage.setScene(new Scene(view));
+            stage.setTitle("Entregas Pendientes");
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.showAndWait();
+
+        } catch (IOException e) {
+            Utils.showSimpleAlert(Alert.AlertType.ERROR, "Error de Interfaz", "No se pudo abrir la ventana.");
+        }
     }
 
     @FXML

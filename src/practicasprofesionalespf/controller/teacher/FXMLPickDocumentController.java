@@ -68,6 +68,7 @@ public class FXMLPickDocumentController implements Initializable {
     private void loadTableData(){
         try {
             int idRecord = RecordDAO.obtainIDRecordWithStudentId(student.getIdStudent());
+            System.out.println(student.getFullName());
             List<InitialDocument> initialDocs = InitialDocumentDAO.obtainInitialDocument(idRecord);
             List<FinalDocument> finalDocs = FinalDocumentDAO.obtainFinalDocument(idRecord);
             List<Report> reports = ReportDAO.obtainInitialDocument(idRecord);

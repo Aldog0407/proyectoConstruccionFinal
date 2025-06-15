@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import practicasprofesionalespf.model.DBConnection;
+import practicasprofesionalespf.model.pojo.OperationResult;
 import practicasprofesionalespf.model.pojo.Record;
 
 
@@ -51,5 +52,25 @@ public class RecordDAO {
             }
         }
         return record;
+    }
+    
+     public static OperationResult updateHoursCount(int idRecord, int totalHours) throws SQLException {
+        OperationResult result = new OperationResult();
+        String query = "UPDATE Record SET hoursCount = ? WHERE idRecord = ?";
+        try (Connection connection = new DBConnection().createConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            
+            preparedStatement.setInt(1, totalHours);
+            preparedStatement.setInt(2, idRecord);
+
+            int affectedRows = preparedStatement.executeUpdate();
+            if (affectedRows > 0) {
+                result.setError(false);
+            } else {
+                result.setError(true);
+                result.setMessage("No se pudo actualizar el contador de horas.");
+            }
+        }
+        return result;
     }
 }

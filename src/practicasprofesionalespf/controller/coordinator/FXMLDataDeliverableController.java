@@ -1,9 +1,7 @@
 package practicasprofesionalespf.controller.coordinator;
 
-import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
-import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -68,7 +66,7 @@ public class FXMLDataDeliverableController implements Initializable {
             OperationResult result = DeliveryDAO.scheduleDelivery(newDelivery);
 
             if (!result.isError()) {
-                Utils.showSimpleAlert(Alert.AlertType.CONFIRMATION, "FXMLPopupConfirmation", result.getMessage());
+                Utils.showSimpleAlert(Alert.AlertType.INFORMATION, "FXMLPopupConfirmation", result.getMessage());
                 closeWindow();
             } else {
                 Utils.showSimpleAlert(Alert.AlertType.ERROR, "Error", result.getMessage());

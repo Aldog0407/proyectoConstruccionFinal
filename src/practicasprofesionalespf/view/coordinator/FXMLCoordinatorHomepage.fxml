@@ -59,6 +59,18 @@
             </ImageView>
          </graphic>
       </Button>
+      <Button layoutX="701.0" layoutY="313.0" mnemonicParsing="false" onAction="#btnRegisterLOclicked" prefHeight="82.0" prefWidth="240.0" style="-fx-background-color: #7c9ccc;" text=" Organización">
+         <font>
+            <Font name="Avenir Medium" size="24.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="28.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../images/organization_icon.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
       <Label layoutX="57.0" layoutY="473.0" text="Gestion de estudiantes">
          <font>
             <Font name="Avenir Medium" size="24.0" />
@@ -77,26 +89,22 @@
          </graphic>
       </Button>
       <Button layoutX="382.0" layoutY="539.0" mnemonicParsing="false" onAction="#btnScheduleDeliverableClicked" prefHeight="82.0" prefWidth="320.0" style="-fx-background-color: #7c9ccc;" text=" Programar Entregables">
-          <font>
-              <Font name="Avenir Medium" size="24.0" />
-          </font>
-          <graphic>
-              <ImageView fitHeight="28.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
-                  <image>
-                      <Image url="@../../images/schedule_icon.png" />
-                  </image>
-              </ImageView>
-          </graphic>
-      </Button>
-      <Separator layoutX="55.0" layoutY="507.0" prefHeight="18.0" prefWidth="844.0" />
-      <Button layoutX="955.0" layoutY="67.0" mnemonicParsing="false" onAction="#onLogoutButtonClicked" prefHeight="35.0" prefWidth="34.0" style="-fx-background-color: #ffffff;">
+         <font>
+            <Font name="Avenir Medium" size="24.0" />
+         </font>
          <graphic>
-            <ImageView fitHeight="31.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="28.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../images/logout_icon.png" />
+                  <Image url="@../../images/schedule_icon.png" />
                </image>
             </ImageView>
          </graphic>
+      </Button>
+      <Separator layoutX="55.0" layoutY="507.0" prefHeight="18.0" prefWidth="844.0" />
+      <Button layoutX="824.0" layoutY="70.0" mnemonicParsing="false" onAction="#onLogoutButtonClicked" prefHeight="40.0" prefWidth="160.0" style="-fx-background-color: #D32F2F;" text="Cerrar Sesión" textFill="WHITE">
+         <font>
+            <Font name="Avenir Medium" size="18.0" />
+         </font>
       </Button>
       <Label layoutX="335.0" layoutY="713.0" text="Universidad Veracruzana © 2025 | Todos los derechos reservados" textFill="#979191" />
    </children>

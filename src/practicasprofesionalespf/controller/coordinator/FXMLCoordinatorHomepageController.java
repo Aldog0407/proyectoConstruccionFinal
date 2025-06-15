@@ -7,6 +7,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -58,7 +59,26 @@ public class FXMLCoordinatorHomepageController implements Initializable {
 
     @FXML
     private void onLogoutButtonClicked(ActionEvent event) {
-    }
+        if (Utils.showConfirmationAlert("¿Seguro que quieres cerrar sesión?", "Cerrar Sesión")) {
+            
+            Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            currentStage.close();
+
+            try {
+                Stage loginStage = new Stage();
+                Parent root = FXMLLoader.load(getClass().getResource("/practicasprofesionalespf/view/FXMLLogin.fxml"));
+                
+                Scene scene = new Scene(root);
+                loginStage.setScene(scene);
+                loginStage.setTitle("Iniciar Sesión");
+                loginStage.show();
+                
+            } catch (IOException e) {
+                Utils.showSimpleAlert(Alert.AlertType.ERROR, "Error de Interfaz", "No se pudo cargar la ventana de inicio de sesión.");
+            }
+        }
+    }   
+    
     
     @FXML
     private void btnScheduleDeliverableClicked(ActionEvent event) {
@@ -76,6 +96,21 @@ public class FXMLCoordinatorHomepageController implements Initializable {
                 "Error con la interfaz", 
                 "No se pudo abrir la ventana, inténtalo más tarde"
             );
+        }
+    }
+    
+    @FXML
+    private void btnRegisterLOclicked(ActionEvent event) {
+        try {
+            Stage stage = new Stage();
+            Parent view = FXMLLoader.load(getClass().getResource("/practicasprofesionalespf/view/coordinator/FXMLRegistrationFormLO.fxml"));
+            Scene scene = new Scene(view);
+            stage.setScene(scene);
+            stage.setTitle("Registrar Organización Vinculada");
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.showAndWait();
+        } catch(IOException ex) {
+            Utils.showSimpleAlert(Alert.AlertType.ERROR, "Error con la interfaz", "No se pudo abrir la ventana, intentalo más tarde");
         }
     }
 }

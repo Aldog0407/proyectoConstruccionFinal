@@ -3,17 +3,17 @@ package practicasprofesionalespf.model.pojo;
 public class LinkedOrganization {
    private int idLinkedOrganization;
    private String name;
-   private boolean status;
+   private boolean isActive;
    private String address;
    private String phone;
 
     public LinkedOrganization() {
     }
 
-    public LinkedOrganization(int idLinkedOrganization, String name, boolean status, String address, String phone) {
+    public LinkedOrganization(int idLinkedOrganization, String name, boolean isActive, String address, String phone) {
         this.idLinkedOrganization = idLinkedOrganization;
         this.name = name;
-        this.status = status;
+        this.isActive = isActive;
         this.address = address;
         this.phone = phone;
     }
@@ -34,12 +34,12 @@ public class LinkedOrganization {
         this.name = name;
     }
 
-    public boolean isStatus() {
-        return status;
+    public boolean getIsActive() {
+        return isActive;
     }
 
-    public void setStatus(boolean status) {
-        this.status = status;
+    public void setIsActive(boolean isActive) {
+        this.isActive = isActive;
     }
 
     public String getAddress() {
