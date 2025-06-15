@@ -6,4 +6,5 @@ import java.sql.SQLException;
 public interface IDBConnection {
     
     public Connection createConnection() throws SQLException;
+    
 }

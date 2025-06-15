@@ -12,6 +12,7 @@ public class Student {
     private String semester;
     private boolean isAssignedToProject;
     private String projectSelection;
+    private int idProject;
     private double grade;
 
     public Student() {
@@ -128,5 +129,12 @@ public class Student {
         this.grade = grade;
     }
     
+    public int getIdProject() {
+        return idProject;
+    }
+
+    public void setIdProject(int idProject) {
+        this.idProject = idProject;
+    }
    
 }

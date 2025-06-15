@@ -80,5 +80,29 @@ public class StudentDAO {
        
        return student;
    }
+   
+   public static ArrayList<Student> getStudentsWithProject() throws SQLException {
+        ArrayList<Student> students = new ArrayList<>();
+        String query = "SELECT * FROM student WHERE idProject IS NOT NULL";
+
+        try (Connection connection = new DBConnection().createConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(query);
+             ResultSet resultSet = preparedStatement.executeQuery()) {
+
+            while (resultSet.next()) {
+                Student student = new Student();
+                student.setIdStudent(resultSet.getInt("idUser"));
+                student.setFirstName(resultSet.getString("name"));
+                student.setLastNameFather(resultSet.getString("lastName"));
+                student.setLastNameMother(resultSet.getString("secondLastName"));
+                student.setEnrollment(resultSet.getString("tuition"));
+                student.setIdProject(resultSet.getInt("idProject"));
+                students.add(student);
+            }
+        }
+        
+        return students;
+    }
+   
     
 }
