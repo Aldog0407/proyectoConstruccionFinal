@@ -48,16 +48,16 @@ public class FXMLScheduleDeliverableController implements Initializable {
         configureTable();
         loadStudentsWithProject();
         cbDeliveryType.getItems().setAll(DeliveryType.values());
-        
-        ChangeListener<Object> listener = (obs, oldVal, newVal) -> 
-                btnContinue.setDisable(tvStudents.getSelectionModel().isEmpty() || cbDeliveryType.getSelectionModel().isEmpty());
-        
+
+        ChangeListener<Object> listener = (obs, oldVal, newVal)
+                -> btnContinue.setDisable(tvStudents.getSelectionModel().isEmpty() || cbDeliveryType.getSelectionModel().isEmpty());
+
         tvStudents.getSelectionModel().selectedItemProperty().addListener(listener);
         cbDeliveryType.getSelectionModel().selectedItemProperty().addListener(listener);
-        
+
         btnContinue.setDisable(true);
-    }    
-    
+    }
+
     private void configureTable() {
         tcStudentName.setCellValueFactory(new PropertyValueFactory<>("fullName"));
         tcTuition.setCellValueFactory(new PropertyValueFactory<>("enrollment"));
@@ -68,9 +68,9 @@ public class FXMLScheduleDeliverableController implements Initializable {
             students.addAll(StudentDAO.getStudentsWithProject());
             tvStudents.setItems(students);
         } catch (SQLException e) {
-            Utils.showSimpleAlert(Alert.AlertType.WARNING, 
-                                   "ERROR: No hay conexión con la base de datos. Inténtelo nuevamente.", 
-                                   "ERROR");
+            Utils.showSimpleAlert(Alert.AlertType.WARNING,
+                    "ERROR: No hay conexión con la base de datos. Inténtelo nuevamente.",
+                    "ERROR");
             closeWindow();
         }
     }
@@ -79,8 +79,6 @@ public class FXMLScheduleDeliverableController implements Initializable {
     private void btnContinueClicked(ActionEvent event) {
         Student selectedStudent = tvStudents.getSelectionModel().getSelectedItem();
         DeliveryType selectedType = cbDeliveryType.getSelectionModel().getSelectedItem();
-
-        closeWindow();
 
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/practicasprofesionalespf/view/coordinator/FXMLDataDeliverable.fxml"));
@@ -94,10 +92,14 @@ public class FXMLScheduleDeliverableController implements Initializable {
             datosStage.setScene(scene);
             datosStage.setTitle("Datos del Entregable");
             datosStage.initModality(Modality.APPLICATION_MODAL);
+
             datosStage.showAndWait();
 
+            Stage currentStage = (Stage) tvStudents.getScene().getWindow();
+            currentStage.close();
+
         } catch (IOException ex) {
-             Utils.showSimpleAlert(Alert.AlertType.ERROR,
+            Utils.showSimpleAlert(Alert.AlertType.ERROR,
                     "Error con la interfaz",
                     "No se pudo abrir la ventana, inténtalo más tarde");
         }
@@ -109,8 +111,8 @@ public class FXMLScheduleDeliverableController implements Initializable {
             closeWindow();
         }
     }
-    
-    private void closeWindow(){
+
+    private void closeWindow() {
         Stage stage = (Stage) tvStudents.getScene().getWindow();
         stage.close();
     }
