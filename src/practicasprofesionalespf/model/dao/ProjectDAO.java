@@ -4,7 +4,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import practicasprofesionalespf.model.DBConnection;
+import practicasprofesionalespf.model.pojo.Project;
 
 public class ProjectDAO {
     
@@ -28,4 +30,32 @@ public class ProjectDAO {
         return projectName;
     }
     
+     public static ArrayList<Project> obtainProjects() throws SQLException {
+        ArrayList<Project> projects = new ArrayList<>();
+        String sqlQuery = "SELECT idProject, idRecord, idProjectManager, idLinkedOrganization, idCoordinator, name, department, description, methodology, availability FROM Project";
+        try (Connection dbConnection = new DBConnection().createConnection();
+             PreparedStatement query = dbConnection.prepareStatement(sqlQuery);
+             ResultSet result = query.executeQuery()) {
+            while (result.next()) {
+                projects.add(convertProject(result));
+            }
+        }
+        return projects;
+    }
+     
+      private static Project convertProject(ResultSet result) throws SQLException {
+        Project project = new Project();
+        project.setIdProject(result.getInt("idProject"));
+        project.setIdRecord(result.getInt("idRecord"));
+        project.setIdProjectManager(result.getInt("idProjectManager"));
+        project.setIdLinkedOrganization(result.getInt("idLinkedOrganization"));
+        project.setIdCoordinator(result.getInt("idCoordinator"));
+        project.setName(result.getString("name"));
+        project.setDeparment(result.getString("department")); 
+        project.setDescription(result.getString("description"));
+        project.setMethodology(result.getString("methodology"));
+        project.setAvailability(result.getInt("availability"));
+        return project;
+    }
+     
 }

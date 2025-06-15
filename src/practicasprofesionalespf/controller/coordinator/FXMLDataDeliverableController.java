@@ -14,7 +14,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
-import javafx.scene.control.TextArea; // << CAMBIO: import añadido
+import javafx.scene.control.TextArea; 
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import practicasprofesionalespf.model.dao.DeliveryDAO;
@@ -56,7 +56,7 @@ public class FXMLDataDeliverableController implements Initializable {
 
             Delivery newDelivery = new Delivery();
             newDelivery.setName(tfDeliveryName.getText().trim());
-            newDelivery.setDescription(taDescription.getText().trim()); // << CAMBIO: Se asigna la descripción
+            newDelivery.setDescription(taDescription.getText().trim());
             newDelivery.setDeliveryType(selectedType);
             newDelivery.setIdRecord(studentRecord.getIdRecord());
             
@@ -69,18 +69,17 @@ public class FXMLDataDeliverableController implements Initializable {
             OperationResult result = DeliveryDAO.scheduleDelivery(newDelivery);
             
             if (!result.isError()) {
-                Utils.showSimpleAlert(Alert.AlertType.ERROR, "Confirmación", result.getMessage());
+                Utils.showSimpleAlert(Alert.AlertType.ERROR, "FXMLPopupConfirmation", result.getMessage());
                 closeWindow();
             } else {
                 Utils.showSimpleAlert(Alert.AlertType.ERROR, "Error", result.getMessage());
             }
 
         } catch (SQLException e) {
-            Utils.showSimpleAlert(Alert.AlertType.ERROR, "Error de Conexión", "ERROR: No hay conexión...");
+            Utils.showSimpleAlert(Alert.AlertType.ERROR, "FXMLPopupException", "ERROR: No hay conexión con la Base de Datos. Inténtelo nuevamente.");
         }
     }
     
-    // ... (el resto de la clase se queda igual) ...
     public void initializeData(Student student, DeliveryType type) {
         this.selectedStudent = student;
         this.selectedType = type;
@@ -88,7 +87,6 @@ public class FXMLDataDeliverableController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // Método de inicialización
     }    
     
     private boolean validateFields() {

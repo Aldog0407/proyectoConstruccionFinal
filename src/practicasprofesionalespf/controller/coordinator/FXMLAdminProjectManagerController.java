@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -15,7 +14,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -25,7 +23,6 @@ import practicasprofesionalespf.PracticasProfesionalesPF;
 import practicasprofesionalespf.interFace.INotification;
 import practicasprofesionalespf.model.dao.ProjectManagerDAO;
 import practicasprofesionalespf.model.pojo.ProjectManager;
-import practicasprofesionalespf.model.pojo.OperationResult;
 import practicasprofesionalespf.utils.Utils;
 
 public class FXMLAdminProjectManagerController implements Initializable, INotification {

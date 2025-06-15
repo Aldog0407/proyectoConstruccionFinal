@@ -24,11 +24,22 @@ public class FXMLCoordinatorHomepageController implements Initializable {
 
     @FXML
     private void onProjectButtonClicked(ActionEvent event) {
+        try {
+            Stage projectStage = new Stage();
+            Parent view = FXMLLoader.load(PracticasProfesionalesPF.class.getResource("view/coordinator/FXMLProjects.fxml"));
+            Scene scene = new Scene(view);
+            projectStage.setScene(scene);
+            projectStage.setTitle("Administrar Proyectos");
+            projectStage.initModality(Modality.APPLICATION_MODAL);
+            projectStage.showAndWait();
+        } catch (IOException ex) {
+            Utils.showSimpleAlert(Alert.AlertType.ERROR, "Error con la interfaz", "No se pudo abrir la ventana, intentalo más tarde");
+        }
     }
 
     @FXML
     private void onManagerButtonClicked(ActionEvent event) {
-        try{
+        try {
             Stage managerStage = new Stage();
             Parent view = FXMLLoader.load(PracticasProfesionalesPF.class.getResource("view/coordinator/FXMLAdminProjectManager.fxml"));
             Scene scene = new Scene(view);
@@ -36,12 +47,11 @@ public class FXMLCoordinatorHomepageController implements Initializable {
             managerStage.setTitle("Administrador de Responsable de Proyecto");
             managerStage.initModality(Modality.APPLICATION_MODAL);
             managerStage.showAndWait();
-        }catch(IOException ex){
+        } catch(IOException ex) {
             Utils.showSimpleAlert(Alert.AlertType.ERROR, "Error con la interfaz", "No se pudo abrir la ventana, intentalo más tarde");
         }
     }
     
-
     @FXML
     private void onAssignProjectButtonClicked(ActionEvent event) {
     }
