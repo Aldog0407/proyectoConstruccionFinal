@@ -136,5 +136,13 @@ public class Student {
     public void setIdProject(int idProject) {
         this.idProject = idProject;
     }
+    
+    public String getFullName() {
+        return String.format("%s %s %s", 
+                this.firstName != null ? this.firstName : "", 
+                this.lastNameFather != null ? this.lastNameFather : "", 
+                this.lastNameMother != null ? this.lastNameMother : "").trim();
+    }
+
    
 }
