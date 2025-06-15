@@ -117,8 +117,7 @@ public class FXMLUpdateProjectManagerController implements Initializable {
         try {
             OperationResult updateResult = ProjectManagerDAO.updateProjectManager(projectManager);
             if (!updateResult.isError()) {
-                Utils.showSimpleAlert(Alert.AlertType.INFORMATION, "Actualización Exitosa", "La información del responsable de proyecto se ha actualizado correctamente.");
-                observer.successfulOperation("Update", projectManager.getFirstName());
+                observer.successfulOperation("actualizado", projectManager.getFirstName());
                 closeWindow();
             } else {
                 Utils.showSimpleAlert(Alert.AlertType.ERROR, "Error de Actualización", "No se pudo actualizar el responsable de proyecto.");
@@ -156,11 +155,9 @@ public class FXMLUpdateProjectManagerController implements Initializable {
     }
     
     private void markFields(Set<String> obtainedFields) {
-        // Limpia el estilo de todos los campos
         for (TextField field : fields) {
             field.setStyle("");
         }
-        // Marca los campos inválidos/vacíos
         for (TextField field : fields) {
             if (field.getId() != null && obtainedFields.contains(field.getId())) {
                 field.setStyle("-fx-border-color: red; -fx-border-width: 2px;");
