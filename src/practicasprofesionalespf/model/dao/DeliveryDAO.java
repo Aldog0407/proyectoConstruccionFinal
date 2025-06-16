@@ -10,6 +10,7 @@ import practicasprofesionalespf.model.DBConnection;
 import practicasprofesionalespf.model.enums.DeliveryType;
 import practicasprofesionalespf.model.pojo.Delivery;
 import practicasprofesionalespf.model.pojo.OperationResult;
+import practicasprofesionalespf.model.wrapper.DocumentWrapper;
 
 public class DeliveryDAO {
 
@@ -158,6 +159,37 @@ public class DeliveryDAO {
             }
         }
         return result;
+    }
+    
+    public static ArrayList<Delivery> getAllStudentDeliveries(int idStudent) throws SQLException {
+        ArrayList<Delivery> deliveries = new ArrayList<>();
+        String query = "SELECT d.*, id.filePath as initialPath, rd.filePath as reportPath, fd.filePath as finalPath " +
+                       "FROM Delivery d " +
+                       "JOIN Record r ON d.idRecord = r.idRecord " +
+                       "LEFT JOIN InitialDocument id ON d.idInitialDocument = id.idInitialDocument " +
+                       "LEFT JOIN ReportDocument rd ON d.idReportDocument = rd.idReportDocument " +
+                       "LEFT JOIN FinalDocument fd ON d.idFinalDocument = fd.idFinalDocument " +
+                       "WHERE r.idStudent = ?";
+
+        try (Connection connection = new DBConnection().createConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            
+            preparedStatement.setInt(1, idStudent);
+            try (ResultSet rs = preparedStatement.executeQuery()) {
+                while(rs.next()) {
+                    Delivery delivery = convertDelivery(rs);
+                    
+                    String path = rs.getString("initialPath");
+                    if (path == null) path = rs.getString("reportPath");
+                    if (path == null) path = rs.getString("finalPath");
+                    
+                    delivery.setFilePath(path); 
+                    
+                    deliveries.add(delivery);
+                }
+            }
+        }
+        return deliveries;
     }
 }
 

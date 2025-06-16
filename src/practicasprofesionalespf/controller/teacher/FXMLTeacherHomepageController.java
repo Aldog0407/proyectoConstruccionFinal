@@ -38,4 +38,20 @@ public class FXMLTeacherHomepageController implements Initializable {
         }
     }
     
+    // En FXMLTeacherHomepageController.java
+    @FXML
+    private void btnConsultRecordClicked(ActionEvent event) {
+        try {
+            Stage stage = new Stage();
+            Parent view = FXMLLoader.load(getClass().getResource("/practicasprofesionalespf/view/teacher/FXMLStudentRecord.fxml"));
+            Scene scene = new Scene(view);
+            stage.setScene(scene);
+            stage.setTitle("Consultar Expediente de Estudiante");
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.showAndWait();
+        } catch(IOException ex) {
+            Utils.showSimpleAlert(Alert.AlertType.ERROR, "Error con la interfaz", "No se pudo abrir la ventana.");
+        }
+    }
+    
 }

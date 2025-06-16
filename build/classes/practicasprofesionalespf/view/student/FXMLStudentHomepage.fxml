@@ -47,18 +47,6 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button layoutX="438.0" layoutY="257.0" mnemonicParsing="false" onAction="#btnDeliverReportClicked" prefHeight="80.0" prefWidth="329.0" style="-fx-background-color: #7c9ccc;" text=" Entregar Reporte">
-         <font>
-            <Font name="Avenir Medium" size="24.0" />
-         </font>
-         <graphic>
-            <ImageView fitHeight="28.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../images/report_icon.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Button>
       <Button layoutX="836.0" layoutY="706.0" mnemonicParsing="false" onAction="#onLogoutButtonClicked" prefHeight="40.0" prefWidth="160.0" style="-fx-background-color: #D32F2F;" text="Cerrar Sesión" textFill="WHITE">
          <font>
             <Font name="Avenir Medium" size="18.0" />

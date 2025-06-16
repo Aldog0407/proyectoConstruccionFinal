@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import practicasprofesionalespf.model.DBConnection;
 import practicasprofesionalespf.model.pojo.Student;
+import practicasprofesionalespf.model.pojo.StudentWithProject;
 
 public class StudentDAO {
     
@@ -100,6 +101,30 @@ public class StudentDAO {
                 student.setLastNameFather(resultSet.getString("lastNameFather"));
                 student.setLastNameMother(resultSet.getString("lastNameMother"));
                 student.setEnrollment(resultSet.getString("enrollment"));
+                students.add(student);
+            }
+        }
+        return students;
+    }
+    
+    public static ArrayList<StudentWithProject> getStudentsWithProjectInfo() throws SQLException {
+        ArrayList<StudentWithProject> students = new ArrayList<>();
+        String query = "SELECT s.*, p.name as projectName FROM Student s " +
+                       "JOIN Record r ON s.idStudent = r.idStudent " +
+                       "JOIN Project p ON r.idRecord = p.idRecord";
+
+        try (Connection connection = new DBConnection().createConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(query);
+             ResultSet resultSet = preparedStatement.executeQuery()) {
+
+            while (resultSet.next()) {
+                StudentWithProject student = new StudentWithProject();
+                student.setIdStudent(resultSet.getInt("idStudent"));
+                student.setFirstName(resultSet.getString("firstName"));
+                student.setLastNameFather(resultSet.getString("lastNameFather"));
+                student.setLastNameMother(resultSet.getString("lastNameMother"));
+                student.setEnrollment(resultSet.getString("enrollment"));
+                student.setProjectName(resultSet.getString("projectName"));
                 students.add(student);
             }
         }

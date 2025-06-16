@@ -3,6 +3,7 @@ package practicasprofesionalespf.controller.teacher;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
@@ -21,6 +22,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import practicasprofesionalespf.PracticasProfesionalesPF;
+import practicasprofesionalespf.model.dao.DocumentDAO;
 import practicasprofesionalespf.model.dao.FinalDocumentDAO;
 import practicasprofesionalespf.model.dao.InitialDocumentDAO;
 import practicasprofesionalespf.model.dao.ProjectDAO;
@@ -68,10 +70,11 @@ public class FXMLPickDocumentController implements Initializable {
     private void loadTableData(){
         try {
             int idRecord = RecordDAO.obtainIDRecordWithStudentId(student.getIdStudent());
-            System.out.println(student.getFullName());
             List<InitialDocument> initialDocs = InitialDocumentDAO.obtainInitialDocument(idRecord);
             List<FinalDocument> finalDocs = FinalDocumentDAO.obtainFinalDocument(idRecord);
-            List<Report> reports = ReportDAO.obtainInitialDocument(idRecord);
+
+            List<Report> reports = ReportDAO.obtainReportsByRecord(idRecord); 
+            
             documents = FXCollections.observableArrayList();
             addInitialDocuments(initialDocs);
             addFinalDocuments(finalDocs);
@@ -82,7 +85,6 @@ public class FXMLPickDocumentController implements Initializable {
             Utils.showSimpleAlert(Alert.AlertType.ERROR, "Error al cargar la tabla", "Lo sentimos, "
             + "por el momento no se puede mostrar la información de los documentos. "
             + "Por favor inténtelo más tarde");
-            closeWindow();
         }
     }
     

@@ -53,10 +53,7 @@ public class FXMLStudentHomepageController implements Initializable {
         }
     }
 
-    @FXML
-    private void btnDeliverReportClicked(ActionEvent event) {
-        
-    }
+ 
 
     @FXML
     private void onLogoutButtonClicked(ActionEvent event) {

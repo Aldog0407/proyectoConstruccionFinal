@@ -3,36 +3,32 @@ package practicasprofesionalespf.model.pojo;
 import java.time.LocalDateTime;
 import practicasprofesionalespf.model.enums.DeliveryType;
 
-
-
 public class Delivery {
     private int idDelivery;
     private int idRecord;
     private String name;
+    private String description;
     private LocalDateTime startDate;
     private LocalDateTime endDate;
     private DeliveryType deliveryType;
     private int idInitialDocument;
     private int idfinalDocument;
     private int ReportDocument;
-    private String description; 
-
+    
+    private String filePath; 
 
     public Delivery() {
     }
 
-    public Delivery(int idDelivery, int idRecord, String name, LocalDateTime startDate, LocalDateTime endDate, DeliveryType deliveryType, int idInitialDocument, int idfinalDocument, int ReportDocument) {
-        this.idDelivery = idDelivery;
-        this.idRecord = idRecord;
-        this.name = name;
-        this.startDate = startDate;
-        this.endDate = endDate;
-        this.deliveryType = deliveryType;
-        this.idInitialDocument = idInitialDocument;
-        this.idfinalDocument = idfinalDocument;
-        this.ReportDocument = ReportDocument;
+
+    public String getFilePath() {
+        return filePath;
     }
 
+    public void setFilePath(String filePath) {
+        this.filePath = filePath;
+    }
+    
     public int getIdDelivery() {
         return idDelivery;
     }
@@ -55,6 +51,13 @@ public class Delivery {
 
     public void setName(String name) {
         this.name = name;
+    }
+     public String getDescription() { 
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public LocalDateTime getStartDate() {
@@ -104,16 +107,4 @@ public class Delivery {
     public void setReportDocument(int ReportDocument) {
         this.ReportDocument = ReportDocument;
     }
-    
-    public String getDescription() { // << CAMBIO: Getter añadido
-        return description;
-    }
-
-    public void setDescription(String description) { // << CAMBIO: Setter añadido
-        this.description = description;
-    }
-    
-    
-    
-    
 }

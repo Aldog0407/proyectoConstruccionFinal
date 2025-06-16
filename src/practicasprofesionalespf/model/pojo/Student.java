@@ -13,6 +13,8 @@ public class Student {
     private boolean isAssignedToProject;
     private String projectSelection;
     private double grade;
+    
+    
 
     public Student() {
     }
